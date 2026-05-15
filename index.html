@@ -3,648 +3,558 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Ajaypal Singh — Senior Frontend Developer</title>
-<meta name="description" content="Senior Frontend Developer specializing in React, Next.js, TypeScript. Building real-time AI platforms and scalable web apps."/>
+<title>Ajaypal Singh — Senior Frontend / MERN Developer</title>
+<meta name="description" content="Senior Frontend & Full-Stack MERN Developer. Building real-time AI platforms, scalable CMSs, and production-grade web apps. 4+ years experience."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
 <style>
-:root {
-  --bg: #080b10;
-  --bg2: #0d1117;
-  --bg3: #161b22;
-  --border: rgba(255,255,255,0.07);
-  --border2: rgba(255,255,255,0.12);
-  --text: #e6edf3;
-  --muted: #7d8590;
-  --accent: #00d9ff;
-  --accent2: #f97316;
-  --green: #3fb950;
-  --purple: #a855f7;
-  --font: 'Space Grotesk', sans-serif;
-  --mono: 'JetBrains Mono', monospace;
-}
+/* ─── RESET & TOKENS ─────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:       #07080c;
+  --bg2:      #0e1015;
+  --bg3:      #13151c;
+  --bg4:      #191c26;
+  --border:   rgba(255,255,255,0.06);
+  --border2:  rgba(255,255,255,0.11);
+  --text:     #eceef4;
+  --muted:    #6e7387;
+  --muted2:   #9aa0b8;
+  --fe:       #ff6b35;
+  --mern:     #00d9ff;
+  --active:   var(--fe);
+  --glow:     rgba(255,107,53,0.12);
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+}
+[data-mode="mern"] { --active: var(--mern); --glow: rgba(0,217,255,0.1); }
+
 html { scroll-behavior: smooth; }
-body { background: var(--bg); color: var(--text); font-family: var(--font); line-height: 1.6; overflow-x: hidden; }
-
-/* ── SCROLLBAR ── */
-::-webkit-scrollbar { width: 4px; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+::selection { background: var(--active); color: var(--bg); }
+::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+::-webkit-scrollbar-thumb { background: var(--active); border-radius: 2px; }
+a { color: inherit; text-decoration: none; }
 
-/* ── NAV ── */
+/* ─── NAV ────────────────────────────────────────────────── */
 nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 5%; height: 60px;
-  background: rgba(8,11,16,0.85); backdrop-filter: blur(12px);
+  padding: 0 clamp(20px, 5vw, 64px); height: 58px;
+  background: rgba(7,8,12,0.85);
+  backdrop-filter: blur(16px) saturate(180%);
   border-bottom: 1px solid var(--border);
 }
-.nav-logo { font-family: var(--mono); font-size: 14px; color: var(--accent); letter-spacing: 0.05em; }
-.nav-links { display: flex; gap: 28px; list-style: none; }
-.nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color .2s; letter-spacing: .02em; }
-.nav-links a:hover { color: var(--text); }
-.nav-cta {
-  font-size: 12px; padding: 6px 16px; border-radius: 6px;
-  background: transparent; border: 1px solid var(--accent);
-  color: var(--accent); text-decoration: none; font-family: var(--mono);
-  transition: background .2s, color .2s;
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 17px; font-weight: 800;
+  letter-spacing: -0.03em; color: var(--text);
 }
-.nav-cta:hover { background: var(--accent); color: var(--bg); }
+.nav-logo span { color: var(--active); transition: color 0.4s; }
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links a { font-size: 13px; color: var(--muted); letter-spacing: 0.02em; transition: color 0.2s; font-family: var(--font-mono); }
+.nav-links a:hover { color: var(--text); }
+.nav-hire {
+  font-size: 12px; font-family: var(--font-mono);
+  padding: 7px 18px; border-radius: 6px;
+  border: 1px solid var(--active); color: var(--active);
+  transition: background 0.2s, color 0.2s; cursor: pointer; background: transparent;
+}
+.nav-hire:hover { background: var(--active); color: var(--bg); }
 
-/* ── SECTIONS ── */
-section { padding: 80px 5%; max-width: 1100px; margin: 0 auto; }
-.section-label { font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px; }
-.section-title { font-size: clamp(26px, 4vw, 38px); font-weight: 700; margin-bottom: 48px; color: var(--text); }
-.section-title span { color: var(--accent); }
+/* ─── ROLE TOGGLE ────────────────────────────────────────── */
+.role-toggle-wrap {
+  position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%);
+  z-index: 300;
+  background: var(--bg3); border: 1px solid var(--border2);
+  border-radius: 50px; padding: 5px;
+  display: flex; gap: 4px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+}
+.toggle-btn {
+  font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+  padding: 8px 20px; border-radius: 40px; border: none; cursor: pointer;
+  transition: background 0.3s, color 0.3s; letter-spacing: 0.04em; white-space: nowrap;
+  background: transparent; color: var(--muted);
+}
+[data-mode="fe"] .toggle-btn.fe { background: var(--fe); color: #fff; }
+[data-mode="mern"] .toggle-btn.mern { background: var(--mern); color: var(--bg); }
 
-/* ── HERO ── */
+/* ─── HERO ───────────────────────────────────────────────── */
 #hero {
-  min-height: 100vh; display: flex; flex-direction: column;
-  justify-content: center; padding-top: 80px;
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 100px clamp(20px, 5vw, 64px) 80px;
   position: relative; overflow: hidden;
 }
-.hero-grid {
-  position: absolute; inset: 0; opacity: 0.03;
-  background-image: linear-gradient(var(--accent) 1px, transparent 1px), linear-gradient(90deg, var(--accent) 1px, transparent 1px);
-  background-size: 60px 60px;
+.hero-lines {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
 }
-.hero-glow {
-  position: absolute; top: 20%; left: -10%; width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(0,217,255,0.06) 0%, transparent 70%);
-  pointer-events: none;
+.hero-orb {
+  position: absolute; z-index: 0;
+  border-radius: 50%; filter: blur(80px); pointer-events: none;
 }
-.hero-content { position: relative; z-index: 1; }
-.hero-tag {
+.hero-orb-1 { width: 500px; height: 500px; top: -100px; left: -100px; background: var(--glow); transition: background 0.6s; }
+.hero-orb-2 { width: 300px; height: 300px; bottom: 0; right: 10%; background: rgba(168,85,247,0.06); }
+.hero-inner { position: relative; z-index: 1; max-width: 780px; }
+.hero-status {
   display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--mono); font-size: 12px; color: var(--green);
-  border: 1px solid rgba(63,185,80,0.3); border-radius: 20px;
-  padding: 4px 14px; margin-bottom: 24px;
+  font-family: var(--font-mono); font-size: 12px;
+  color: #3fb950; border: 1px solid rgba(63,185,80,0.25);
+  border-radius: 20px; padding: 5px 14px; margin-bottom: 28px;
+  background: rgba(63,185,80,0.05);
 }
-.hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-.hero-name {
-  font-size: clamp(42px, 7vw, 80px); font-weight: 700; line-height: 1.05;
-  letter-spacing: -0.02em; margin-bottom: 16px;
-}
-.hero-name .accent { color: var(--accent); }
-.hero-role {
-  font-size: clamp(16px, 2.5vw, 22px); color: var(--muted);
-  font-weight: 400; margin-bottom: 20px;
-}
+.hero-status-dot { width: 6px; height: 6px; border-radius: 50%; background: #3fb950; animation: blink 2s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.hero-eyebrow { font-family: var(--font-mono); font-size: 13px; color: var(--active); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; transition: color 0.4s; }
+.hero-name { font-family: var(--font-display); font-size: clamp(52px, 9vw, 100px); font-weight: 800; line-height: 0.95; letter-spacing: -0.04em; margin-bottom: 24px; color: var(--text); }
+.hero-name .line2 { color: var(--active); transition: color 0.4s; }
+.hero-role { font-size: clamp(15px, 2vw, 18px); color: var(--muted2); font-weight: 300; letter-spacing: 0.01em; margin-bottom: 20px; }
 .hero-role strong { color: var(--text); font-weight: 500; }
-.hero-desc {
-  font-size: 15px; color: var(--muted); max-width: 520px;
-  line-height: 1.7; margin-bottom: 36px;
-}
-.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-.btn-primary {
-  padding: 12px 28px; border-radius: 8px; font-size: 14px; font-weight: 500;
-  background: var(--accent); color: var(--bg); text-decoration: none;
-  transition: opacity .2s, transform .1s; letter-spacing: .02em;
-}
-.btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
-.btn-outline {
-  padding: 12px 28px; border-radius: 8px; font-size: 14px; font-weight: 500;
-  border: 1px solid var(--border2); color: var(--text); text-decoration: none;
-  transition: border-color .2s, background .2s; letter-spacing: .02em;
-}
-.btn-outline:hover { border-color: var(--accent); background: rgba(0,217,255,0.05); }
-.hero-stats { display: flex; gap: 40px; margin-top: 56px; flex-wrap: wrap; }
-.stat-item { }
-.stat-num { font-size: 28px; font-weight: 700; color: var(--text); line-height: 1; }
-.stat-num span { color: var(--accent); }
-.stat-desc { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.hero-desc { font-size: 15px; color: var(--muted); max-width: 520px; line-height: 1.8; margin-bottom: 40px; font-weight: 300; }
+.hero-desc em { color: var(--muted2); font-style: normal; }
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 56px; }
+.cta-primary { padding: 13px 30px; border-radius: 8px; background: var(--active); color: var(--bg); font-size: 14px; font-weight: 600; transition: opacity 0.2s, transform 0.15s; display: inline-block; }
+.cta-primary:hover { opacity: 0.85; transform: translateY(-2px); }
+.cta-secondary { padding: 13px 30px; border-radius: 8px; border: 1px solid var(--border2); color: var(--muted2); font-size: 14px; font-weight: 400; transition: border-color 0.2s, color 0.2s; display: inline-block; }
+.cta-secondary:hover { border-color: var(--active); color: var(--text); }
+.hero-stats { display: flex; gap: 48px; flex-wrap: wrap; }
+.stat-n { font-family: var(--font-display); font-size: 36px; font-weight: 800; line-height: 1; color: var(--text); letter-spacing: -0.03em; }
+.stat-n span { color: var(--active); transition: color 0.4s; }
+.stat-l { font-size: 12px; color: var(--muted); margin-top: 5px; font-family: var(--font-mono); }
 
-/* ── ABOUT ── */
-#about .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
-.about-text p { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+/* ─── SECTION BASE ───────────────────────────────────────── */
+.section { padding: 80px clamp(20px, 5vw, 64px); max-width: 1160px; margin: 0 auto; position: relative; z-index: 1; }
+.section-label { font-family: var(--font-mono); font-size: 11px; color: var(--active); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 10px; transition: color 0.4s; }
+.section-heading { font-family: var(--font-display); font-size: clamp(30px, 4vw, 46px); font-weight: 800; letter-spacing: -0.03em; color: var(--text); margin-bottom: 52px; line-height: 1.05; }
+.section-heading em { color: var(--active); font-style: normal; transition: color 0.4s; }
+hr.divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+/* ─── ROLE CONTENT ───────────────────────────────────────── */
+[data-mode="fe"] .mern-content { display: none; }
+[data-mode="mern"] .fe-content { display: none; }
+
+/* ─── ABOUT ──────────────────────────────────────────────── */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.about-text p { font-size: 15px; color: var(--muted); line-height: 1.85; margin-bottom: 18px; font-weight: 300; }
 .about-text p strong { color: var(--text); font-weight: 500; }
-.about-cards { display: flex; flex-direction: column; gap: 12px; }
-.about-card {
-  background: var(--bg3); border: 1px solid var(--border);
-  border-radius: 10px; padding: 16px 20px;
-  display: flex; align-items: flex-start; gap: 14px;
-  transition: border-color .2s;
-}
-.about-card:hover { border-color: var(--border2); }
-.about-card-icon { font-size: 20px; }
-.about-card-content h4 { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 2px; }
-.about-card-content p { font-size: 12.5px; color: var(--muted); }
+.about-cards { display: flex; flex-direction: column; gap: 10px; }
+.about-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; display: flex; align-items: flex-start; gap: 14px; transition: border-color 0.2s, background 0.2s; }
+.about-card:hover { border-color: var(--border2); background: var(--bg4); }
+.about-card-ico { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.about-card h4 { font-size: 13.5px; font-weight: 500; color: var(--text); margin-bottom: 2px; font-family: var(--font-display); }
+.about-card p { font-size: 12px; color: var(--muted); line-height: 1.5; }
 
-/* ── SKILLS ── */
-#skills .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
-.skill-group {
-  background: var(--bg3); border: 1px solid var(--border);
-  border-radius: 10px; padding: 20px;
-  transition: border-color .2s;
-}
+/* ─── SKILLS ─────────────────────────────────────────────── */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.skill-group { background: var(--bg3); border: 1px solid var(--border); border-radius: 10px; padding: 20px; transition: border-color 0.2s; }
 .skill-group:hover { border-color: var(--border2); }
-.skill-group-label {
-  font-family: var(--mono); font-size: 11px; color: var(--accent);
-  letter-spacing: .1em; text-transform: uppercase; margin-bottom: 14px;
-}
-.skill-pills { display: flex; flex-wrap: wrap; gap: 6px; }
-.skill-pill {
-  font-size: 12px; padding: 4px 10px; border-radius: 6px;
-  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
-  color: var(--muted); transition: color .2s, border-color .2s;
-}
-.skill-pill:hover { color: var(--text); border-color: var(--border2); }
-.skill-pill.hot { color: var(--accent); border-color: rgba(0,217,255,0.25); background: rgba(0,217,255,0.05); }
+.skill-group-name { font-family: var(--font-mono); font-size: 10.5px; color: var(--active); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px; transition: color 0.4s; }
+.pills { display: flex; flex-wrap: wrap; gap: 5px; }
+.pill { font-size: 12px; padding: 3px 9px; border-radius: 5px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: var(--muted); transition: color 0.2s, border-color 0.2s; }
+.pill:hover { color: var(--text); }
+.pill.hot { background: rgba(255,255,255,0.06); border-color: var(--border2); color: var(--muted2); }
 
-/* ── PROJECTS ── */
-#projects .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
-.project-card {
-  background: var(--bg3); border: 1px solid var(--border);
-  border-radius: 12px; padding: 24px; position: relative;
-  transition: border-color .25s, transform .2s;
-  display: flex; flex-direction: column;
-}
-.project-card:hover { border-color: var(--border2); transform: translateY(-2px); }
-.project-card.featured { border-color: rgba(0,217,255,0.2); }
-.project-card.featured::before {
-  content: 'Featured'; position: absolute; top: -1px; right: 20px;
-  font-family: var(--mono); font-size: 10px; color: var(--bg);
-  background: var(--accent); padding: 2px 10px; border-radius: 0 0 6px 6px;
-  letter-spacing: .06em;
-}
-.project-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; }
-.project-emoji { font-size: 24px; }
-.project-links { display: flex; gap: 8px; }
-.project-link {
-  font-size: 11px; color: var(--muted); text-decoration: none;
-  border: 1px solid var(--border); border-radius: 5px; padding: 3px 8px;
-  transition: color .2s, border-color .2s;
-}
-.project-link:hover { color: var(--accent); border-color: rgba(0,217,255,0.3); }
-.project-name { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
-.project-tagline { font-size: 12px; color: var(--accent2); font-weight: 500; margin-bottom: 10px; font-family: var(--mono); }
-.project-desc { font-size: 13.5px; color: var(--muted); line-height: 1.65; flex: 1; margin-bottom: 16px; }
-.project-tags { display: flex; flex-wrap: wrap; gap: 5px; }
-.project-tag {
-  font-size: 11px; padding: 2px 8px; border-radius: 4px;
-  background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: var(--muted);
-}
-.live-dot {
-  display: inline-flex; align-items: center; gap: 5px;
-  font-size: 10.5px; color: var(--green); font-family: var(--mono);
-  margin-bottom: 10px;
-}
-.live-dot::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--green); animation: pulse 2s infinite; }
+/* ─── PROJECTS ───────────────────────────────────────────── */
+.proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
+.proj-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; position: relative; overflow: hidden; transition: border-color 0.25s, transform 0.2s, background 0.2s; }
+.proj-card:hover { border-color: var(--border2); transform: translateY(-3px); background: var(--bg4); }
+.proj-card.star { border-color: rgba(255,107,53,0.2); background: linear-gradient(135deg, rgba(255,107,53,0.04) 0%, var(--bg3) 60%); }
+[data-mode="mern"] .proj-card.star { border-color: rgba(0,217,255,0.18); background: linear-gradient(135deg, rgba(0,217,255,0.04) 0%, var(--bg3) 60%); }
+.proj-card.star::after { content: 'Featured'; position: absolute; top: 0; right: 24px; font-family: var(--font-mono); font-size: 10px; background: var(--active); color: var(--bg); padding: 3px 10px; border-radius: 0 0 7px 7px; letter-spacing: 0.06em; font-weight: 500; transition: background 0.4s; }
+.proj-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 12px; }
+.proj-emoji { font-size: 26px; }
+.proj-actions { display: flex; gap: 7px; }
+.proj-btn { font-family: var(--font-mono); font-size: 11px; padding: 4px 10px; border-radius: 5px; border: 1px solid var(--border); color: var(--muted); transition: color 0.2s, border-color 0.2s; }
+.proj-btn:hover { color: var(--active); border-color: var(--active); }
+.proj-live { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-mono); font-size: 10.5px; color: #3fb950; margin-bottom: 8px; }
+.proj-live::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #3fb950; animation: blink 2s infinite; }
+.proj-name { font-family: var(--font-display); font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 3px; letter-spacing: -0.02em; }
+.proj-tagline { font-size: 12px; color: var(--active); font-family: var(--font-mono); margin-bottom: 12px; transition: color 0.4s; }
+.proj-desc { font-size: 13px; color: var(--muted); line-height: 1.7; flex: 1; margin-bottom: 18px; font-weight: 300; }
+.proj-desc strong { color: var(--muted2); font-weight: 500; }
+.proj-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.proj-tag { font-size: 11px; padding: 2px 8px; border-radius: 4px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: var(--muted); font-family: var(--font-mono); }
 
-/* ── EXPERIENCE ── */
-#experience .timeline { position: relative; padding-left: 28px; }
-#experience .timeline::before {
-  content: ''; position: absolute; left: 0; top: 8px; bottom: 8px;
-  width: 1px; background: var(--border);
-}
-.timeline-item { position: relative; margin-bottom: 36px; }
-.timeline-dot {
-  position: absolute; left: -33px; top: 6px;
-  width: 10px; height: 10px; border-radius: 50%;
-  background: var(--accent); border: 2px solid var(--bg);
-  box-shadow: 0 0 0 3px rgba(0,217,255,0.15);
-}
-.timeline-period { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-bottom: 6px; }
-.timeline-role { font-size: 17px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
-.timeline-company { font-size: 13px; color: var(--accent); margin-bottom: 10px; }
-.timeline-points { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-.timeline-points li {
-  font-size: 13.5px; color: var(--muted); padding-left: 16px; position: relative; line-height: 1.6;
-}
-.timeline-points li::before { content: '▸'; position: absolute; left: 0; color: var(--accent); font-size: 10px; top: 4px; }
+/* ─── EXPERIENCE ─────────────────────────────────────────── */
+.timeline { position: relative; padding-left: 30px; }
+.timeline::before { content: ''; position: absolute; left: 0; top: 10px; bottom: 10px; width: 1px; background: linear-gradient(to bottom, var(--active), transparent); transition: background 0.4s; }
+.tl-item { position: relative; margin-bottom: 44px; }
+.tl-dot { position: absolute; left: -35px; top: 7px; width: 11px; height: 11px; border-radius: 50%; background: var(--active); border: 2px solid var(--bg); box-shadow: 0 0 0 3px var(--glow); transition: background 0.4s, box-shadow 0.4s; }
+.tl-period { font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin-bottom: 7px; }
+.tl-role { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 2px; letter-spacing: -0.02em; }
+.tl-co { font-size: 13px; color: var(--active); margin-bottom: 14px; font-family: var(--font-mono); transition: color 0.4s; }
+.tl-pts { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.tl-pts li { font-size: 13.5px; color: var(--muted); padding-left: 18px; position: relative; line-height: 1.65; font-weight: 300; }
+.tl-pts li::before { content: '▸'; position: absolute; left: 0; color: var(--active); font-size: 10px; top: 5px; transition: color 0.4s; }
 
-/* ── CONTACT ── */
-#contact { text-align: center; }
-#contact .contact-desc { font-size: 16px; color: var(--muted); max-width: 460px; margin: 0 auto 36px; line-height: 1.7; }
-.contact-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-.contact-link {
-  display: flex; align-items: center; gap: 8px;
-  padding: 10px 20px; border-radius: 8px;
-  border: 1px solid var(--border); color: var(--muted);
-  text-decoration: none; font-size: 13.5px;
-  transition: border-color .2s, color .2s, background .2s;
-}
-.contact-link:hover { border-color: var(--accent); color: var(--accent); background: rgba(0,217,255,0.04); }
-.contact-link svg { width: 16px; height: 16px; fill: currentColor; }
+/* ─── CONTACT ────────────────────────────────────────────── */
+.contact-title { font-family: var(--font-display); font-size: clamp(36px, 6vw, 64px); font-weight: 800; letter-spacing: -0.04em; line-height: 1; margin-bottom: 20px; color: var(--text); }
+.contact-title em { color: var(--active); font-style: normal; transition: color 0.4s; }
+.contact-sub { font-size: 15px; color: var(--muted); max-width: 400px; margin: 0 auto 36px; line-height: 1.8; font-weight: 300; }
+.contact-row { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.contact-link { display: flex; align-items: center; gap: 8px; padding: 11px 22px; border-radius: 8px; border: 1px solid var(--border); color: var(--muted); font-size: 13.5px; font-family: var(--font-mono); transition: border-color 0.2s, color 0.2s, background 0.2s; }
+.contact-link:hover { border-color: var(--active); color: var(--active); background: var(--glow); }
+.contact-link svg { width: 15px; height: 15px; fill: currentColor; flex-shrink: 0; }
 
-/* ── FOOTER ── */
-footer {
-  text-align: center; padding: 28px 5%;
-  border-top: 1px solid var(--border);
-  font-family: var(--mono); font-size: 12px; color: var(--muted);
-}
-footer span { color: var(--accent); }
+/* ─── FOOTER ─────────────────────────────────────────────── */
+footer { text-align: center; padding: 24px; border-top: 1px solid var(--border); font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+footer span { color: var(--active); transition: color 0.4s; }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 680px) {
-  nav { padding: 0 4%; }
+/* ─── FADE IN ────────────────────────────────────────────── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.reveal.in { opacity: 1; transform: none; }
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 720px) {
   .nav-links { display: none; }
-  section { padding: 64px 4%; }
-  #about .about-grid { grid-template-columns: 1fr; }
-  .hero-stats { gap: 24px; }
+  nav { padding: 0 20px; }
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  .hero-stats { gap: 28px; }
+  .proj-grid { grid-template-columns: 1fr; }
+  .role-toggle-wrap { width: calc(100% - 40px); justify-content: center; }
 }
-
-/* ── FADE IN ── */
-.fade-in { opacity: 0; transform: translateY(20px); transition: opacity .5s ease, transform .5s ease; }
-.fade-in.visible { opacity: 1; transform: none; }
 </style>
 </head>
-<body>
+<body data-mode="fe">
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">ajaypal.dev</div>
+  <div class="nav-logo">ajaypal<span>.</span>dev</div>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about">about</a></li>
+    <li><a href="#skills">skills</a></li>
+    <li><a href="#projects">projects</a></li>
+    <li><a href="#experience">experience</a></li>
+    <li><a href="#contact">contact</a></li>
   </ul>
-  <a href="mailto:ajaypalsingh98141@gmail.com" class="nav-cta">Hire Me</a>
+  <a href="mailto:ajaypalsingh98141@gmail.com" class="nav-hire">hire me</a>
 </nav>
+
+<!-- ROLE TOGGLE -->
+<div class="role-toggle-wrap">
+  <button class="toggle-btn fe" onclick="setMode('fe')">⚛️ Frontend Dev</button>
+  <button class="toggle-btn mern" onclick="setMode('mern')">🔧 MERN Full-Stack</button>
+</div>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-content fade-in">
-    <div class="hero-tag">Available for new opportunities</div>
-    <h1 class="hero-name">Ajaypal<br/><span class="accent">Singh</span></h1>
-    <p class="hero-role"><strong>Senior Frontend Developer</strong> · React · Next.js · TypeScript</p>
-    <p class="hero-desc">
-      Building real-time AI platforms, scalable CMSs, and production-grade web apps
-      with 4+ years of experience. Based in Mohali, India.
-    </p>
-    <div class="hero-btns">
-      <a href="#projects" class="btn-primary">View My Work</a>
-      <a href="#contact" class="btn-outline">Get In Touch</a>
+  <div class="hero-lines" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+  <div class="hero-inner reveal">
+    <div class="hero-status"><span class="hero-status-dot"></span>Available for new opportunities</div>
+    <div class="hero-eyebrow fe-content">Senior Frontend Developer</div>
+    <div class="hero-eyebrow mern-content">Full-Stack MERN Developer</div>
+    <h1 class="hero-name">Ajaypal<br/><span class="line2">Singh</span></h1>
+    <p class="hero-role fe-content"><strong>React · Next.js · TypeScript</strong> · Tailwind CSS · Real-time UI</p>
+    <p class="hero-role mern-content"><strong>React · Node.js · MongoDB</strong> · Express · Full-Stack Systems</p>
+    <p class="hero-desc fe-content">Crafting <em>pixel-perfect, performant interfaces</em> for AI platforms, gaming dashboards, and enterprise apps. 4+ years shipping production React & Next.js.</p>
+    <p class="hero-desc mern-content">Building <em>end-to-end full-stack systems</em> — REST APIs, MongoDB schemas, to real-time React frontends. 4+ years in production MERN development.</p>
+    <div class="hero-ctas">
+      <a href="#projects" class="cta-primary">View My Work</a>
+      <a href="#contact" class="cta-secondary">Get In Touch</a>
     </div>
     <div class="hero-stats">
-      <div class="stat-item">
-        <div class="stat-num">4<span>+</span></div>
-        <div class="stat-desc">Years experience</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">10<span>+</span></div>
-        <div class="stat-desc">Production apps</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">2</div>
-        <div class="stat-desc">Live AI products</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">🏆</div>
-        <div class="stat-desc">Employee of Year</div>
-      </div>
+      <div><div class="stat-n">4<span>+</span></div><div class="stat-l">yrs experience</div></div>
+      <div><div class="stat-n">10<span>+</span></div><div class="stat-l">production apps</div></div>
+      <div><div class="stat-n">9<span>+</span></div><div class="stat-l">shipped projects</div></div>
+      <div><div class="stat-n">🏆</div><div class="stat-l">employee of year</div></div>
     </div>
   </div>
 </section>
+
+<hr class="divider"/>
 
 <!-- ABOUT -->
-<section id="about">
-  <div class="fade-in">
-    <div class="section-label">// about me</div>
-    <div class="section-title">Who I <span>Am</span></div>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>
-          I'm a <strong>Senior Frontend Developer</strong> at CHICMIC Studios, Mohali, with 4+ years of experience
-          turning complex product requirements into clean, performant user interfaces.
-        </p>
-        <p>
-          My flagship work is <strong>Maica24</strong> — a real-time AI voice and chat platform built with
-          LiveKit, ElevenLabs TTS, and OpenAI. I own the entire frontend architecture and
-          real-time session management layer.
-        </p>
-        <p>
-          I hold an <strong>MCA from Panjab University</strong>, Chandigarh, and a BCA from R.S.D. College,
-          Firozpur. Currently expanding into full-stack MERN development — Node.js, Express, and MongoDB.
-        </p>
-      </div>
-      <div class="about-cards">
-        <div class="about-card">
-          <div class="about-card-icon">🏆</div>
-          <div class="about-card-content">
-            <h4>Employee of the Year 2023–24</h4>
-            <p>Recognized for outstanding frontend leadership at CHICMIC Studios</p>
-          </div>
-        </div>
-        <div class="about-card">
-          <div class="about-card-icon">🎙️</div>
-          <div class="about-card-content">
-            <h4>AI Product Builder</h4>
-            <p>Built real-time voice AI platform from scratch — LiveKit + OpenAI + ElevenLabs</p>
-          </div>
-        </div>
-        <div class="about-card">
-          <div class="about-card-icon">🌍</div>
-          <div class="about-card-content">
-            <h4>International Product Delivery</h4>
-            <p>Shipped MrCashback CMS for the Finnish market (SEO-critical)</p>
-          </div>
-        </div>
-        <div class="about-card">
-          <div class="about-card-icon">📍</div>
-          <div class="about-card-content">
-            <h4>Mohali, Punjab, India</h4>
-            <p>Open to remote roles globally · On-site in India</p>
-          </div>
-        </div>
-      </div>
+<div class="section reveal" id="about">
+  <div class="section-label">// about me</div>
+  <h2 class="section-heading">Who I <em>Am</em></h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p class="fe-content">I'm a <strong>Senior Frontend Developer</strong> at CHICMIC Studios, Mohali, with 4+ years of experience building production React & Next.js applications. I specialize in <strong>real-time UI, complex state management</strong>, and performance-optimized interfaces.</p>
+      <p class="mern-content">I'm a <strong>Full-Stack MERN Developer</strong> at CHICMIC Studios, Mohali, with 4+ years building end-to-end web applications. I architect <strong>Node.js backends, MongoDB schemas, REST APIs</strong> and connect them to performant React frontends.</p>
+      <p>My flagship project is <strong>Maica24</strong> — a real-time AI voice and chat platform powered by LiveKit, ElevenLabs TTS, and OpenAI GPT. I've also shipped <strong>MrCashback</strong> (12,000+ users in Finland), <strong>MetaRivals</strong> (blockchain esport platform), and 6+ more production apps across gaming, edtech, fintech, and enterprise.</p>
+      <p>I hold an <strong>MCA from Panjab University</strong>, Chandigarh. Recognized as <strong>Employee of the Year 2023–24</strong> at CHICMIC Studios.</p>
+    </div>
+    <div class="about-cards">
+      <div class="about-card"><div class="about-card-ico">🏆</div><div><h4>Employee of the Year 2023–24</h4><p>Recognized for outstanding contributions at CHICMIC Studios</p></div></div>
+      <div class="about-card"><div class="about-card-ico">🎙️</div><div><h4>AI Product Builder</h4><p>Maica24 — real-time AI voice platform with LiveKit + OpenAI + ElevenLabs</p></div></div>
+      <div class="about-card"><div class="about-card-ico">🌍</div><div><h4>International Delivery</h4><p>MrCashback CMS — Finnish market, 12,000+ community members</p></div></div>
+      <div class="about-card"><div class="about-card-ico">🎓</div><div><h4>MCA · Panjab University</h4><p>Masters in Computer Science & Applications · Chandigarh</p></div></div>
+      <div class="about-card"><div class="about-card-ico">📍</div><div><h4>Mohali, Punjab, India</h4><p>Open to remote roles globally · On-site in India</p></div></div>
     </div>
   </div>
-</section>
+</div>
+
+<hr class="divider"/>
 
 <!-- SKILLS -->
-<section id="skills">
-  <div class="fade-in">
-    <div class="section-label">// tech stack</div>
-    <div class="section-title">What I <span>Work With</span></div>
-    <div class="skills-grid">
-      <div class="skill-group">
-        <div class="skill-group-label">Core Frontend</div>
-        <div class="skill-pills">
-          <span class="skill-pill hot">React 18</span>
-          <span class="skill-pill hot">Next.js 14/15</span>
-          <span class="skill-pill hot">TypeScript</span>
-          <span class="skill-pill">JavaScript ES2024</span>
-          <span class="skill-pill">HTML5 / CSS3</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-label">Styling & UI</div>
-        <div class="skill-pills">
-          <span class="skill-pill hot">Tailwind CSS</span>
-          <span class="skill-pill">Material UI</span>
-          <span class="skill-pill">ShadCN/UI</span>
-          <span class="skill-pill">CSS Modules</span>
-          <span class="skill-pill">Styled Components</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-label">State & Data</div>
-        <div class="skill-pills">
-          <span class="skill-pill hot">Zustand</span>
-          <span class="skill-pill">Redux Toolkit</span>
-          <span class="skill-pill">React Query</span>
-          <span class="skill-pill">Apollo Client</span>
-          <span class="skill-pill">GraphQL</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-label">Backend (MERN)</div>
-        <div class="skill-pills">
-          <span class="skill-pill">Node.js</span>
-          <span class="skill-pill">Express.js</span>
-          <span class="skill-pill">MongoDB</span>
-          <span class="skill-pill">REST APIs</span>
-          <span class="skill-pill">JWT Auth</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-label">Real-time & AI</div>
-        <div class="skill-pills">
-          <span class="skill-pill hot">LiveKit</span>
-          <span class="skill-pill">WebRTC</span>
-          <span class="skill-pill">OpenAI API</span>
-          <span class="skill-pill">ElevenLabs</span>
-          <span class="skill-pill">Socket.io</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-label">Tooling & Testing</div>
-        <div class="skill-pills">
-          <span class="skill-pill">Vite</span>
-          <span class="skill-pill">Vitest</span>
-          <span class="skill-pill">React Testing Library</span>
-          <span class="skill-pill">Git</span>
-          <span class="skill-pill">Figma</span>
-          <span class="skill-pill">Vercel</span>
-        </div>
-      </div>
-    </div>
+<div class="section reveal" id="skills">
+  <div class="section-label">// tech stack</div>
+  <h2 class="section-heading">What I <em>Work With</em></h2>
+  <div class="fe-content skills-grid">
+    <div class="skill-group"><div class="skill-group-name">Core Frontend</div><div class="pills"><span class="pill hot">React 18</span><span class="pill hot">Next.js 14/15</span><span class="pill hot">TypeScript</span><span class="pill">JavaScript ES2024</span><span class="pill">HTML5 / CSS3</span></div></div>
+    <div class="skill-group"><div class="skill-group-name">Styling & UI</div><div class="pills"><span class="pill hot">Tailwind CSS</span><span class="pill">Bootstrap</span><span class="pill">Sass / SCSS</span><span class="pill">Material UI</span><span class="pill">ShadCN/UI</span><span class="pill">CSS Modules</span></div></div>
+    <div class="skill-group"><div class="skill-group-name">State & Data</div><div class="pills"><span class="pill hot">Zustand</span><span class="pill hot">Redux Toolkit</span><span class="pill">React Query</span><span class="pill">Apollo Client</span><span class="pill">GraphQL</span></div></div>
+    <div class="skill-group"><div class="skill-group-name">Real-time & AI</div><div class="pills"><span class="pill hot">LiveKit SDK</span><span class="pill">WebRTC</span><span class="pill">OpenAI API</span><span class="pill">ElevenLabs</span><span class="pill">Firebase</span><span class="pill">Socket.io</span></div></div>
+    <div class="skill-group"><div class="skill-group-name">Integrations</div><div class="pills"><span class="pill">Stripe</span><span class="pill">PayPal</span><span class="pill">Zimpler</span><span class="pill">Google Maps API</span><span class="pill">ReactFlow</span></div></div>
+    <div class="skill-group"><div class="skill-group-name">Testing & Tooling</div><div class="pills"><span class="pill">Vitest</span><span class="pill">React Testing Library</span><span class="pill">Vite</span><span class="pill">Git</span><span class="pill">Figma</span><span class="pill">Vercel</span></div></div>
   </div>
-</section>
+  <div class="mern-content skills-grid">
+    <div class="skill-group"><div class="skill-group-name">Frontend</div><div class="pills"><span class="pill hot">React 18</span><span class="pill hot">Next.js 14/15</span><span class="pill hot">TypeScript</span><span class="pill">JavaScript</span><span class="pill">Tailwind CSS</span></div></div>
+    <div class="skill-group"><div class="skill-group-name">Backend</div><div class="pills"><span class="pill hot">Node.js</span><span class="pill hot">Express.js</span><span class="pill">REST APIs</span><span class="pill">JWT Auth</span><span class="pill">BullMQ</span><span class="pill">Middleware</span></div></div>
+    <div class="skill-group"><div class="skill-group-name">Database</div><div class="pills"><span class="pill hot">MongoDB</span><span class="pill">Mongoose</span><span class="pill">Firebase</span><span class="pill">Schema Design</span><span class="pill">Aggregation</span></div></div>
+    <div class="skill-group"><div class="skill-group-name">State & APIs</div><div class="pills"><span class="pill">Redux Toolkit</span><span class="pill">Zustand</span><span class="pill">Apollo Client</span><span class="pill">GraphQL</span><span class="pill">React Query</span></div></div>
+    <div class="skill-group"><div class="skill-group-name">Payments & Maps</div><div class="pills"><span class="pill">Stripe</span><span class="pill">PayPal API</span><span class="pill">Zimpler</span><span class="pill">Google Maps API</span></div></div>
+    <div class="skill-group"><div class="skill-group-name">AI & Real-time</div><div class="pills"><span class="pill hot">LiveKit</span><span class="pill">OpenAI</span><span class="pill">ElevenLabs</span><span class="pill">Groq</span><span class="pill">Gemini</span><span class="pill">Puppeteer</span></div></div>
+  </div>
+</div>
+
+<hr class="divider"/>
 
 <!-- PROJECTS -->
-<section id="projects">
-  <div class="fade-in">
-    <div class="section-label">// featured work</div>
-    <div class="section-title">Things I've <span>Built</span></div>
-    <div class="projects-grid">
+<div class="section reveal" id="projects">
+  <div class="section-label">// featured work</div>
+  <h2 class="section-heading">Things I've <em>Built</em></h2>
 
-      <div class="project-card featured">
-        <div class="project-top">
-          <div class="project-emoji">🎙️</div>
-          <div class="project-links">
-            <a href="https://maica24.com" target="_blank" class="project-link">↗ Live</a>
-          </div>
-        </div>
-        <div class="live-dot">Production live</div>
-        <div class="project-name">Maica24</div>
-        <div class="project-tagline">AI Voice & Chat Platform</div>
-        <p class="project-desc">
-          Real-time AI assistant with voice synthesis. Built end-to-end frontend architecture
-          using LiveKit WebRTC for real-time audio streams, ElevenLabs TTS for voice synthesis,
-          and OpenAI GPT for conversation. Manages concurrent agent sessions with sub-second
-          latency UI updates via Zustand.
-        </p>
-        <div class="project-tags">
-          <span class="project-tag">Next.js</span>
-          <span class="project-tag">TypeScript</span>
-          <span class="project-tag">LiveKit</span>
-          <span class="project-tag">ElevenLabs</span>
-          <span class="project-tag">OpenAI</span>
-          <span class="project-tag">WebRTC</span>
-          <span class="project-tag">Zustand</span>
-        </div>
-      </div>
-
-      <div class="project-card featured">
-        <div class="project-top">
-          <div class="project-emoji">🎰</div>
-          <div class="project-links">
-            <a href="https://mrcashback.fi" target="_blank" class="project-link">↗ Live</a>
-          </div>
-        </div>
-        <div class="live-dot">Production live</div>
-        <div class="project-name">MrCashback</div>
-        <div class="project-tagline">Casino CMS · Finnish Market</div>
-        <p class="project-desc">
-          Full-featured casino content management system for the Finnish market.
-          Built dynamic bonus/offer management, role-based admin dashboard, and
-          SEO-optimized Next.js SSR/SSG pages with strong Core Web Vitals performance.
-        </p>
-        <div class="project-tags">
-          <span class="project-tag">Next.js</span>
-          <span class="project-tag">TypeScript</span>
-          <span class="project-tag">Redux Toolkit</span>
-          <span class="project-tag">SSR/SSG/ISR</span>
-          <span class="project-tag">Tailwind CSS</span>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-top">
-          <div class="project-emoji">☁️</div>
-          <div class="project-links">
-            <a href="https://github.com/ajaypal9/cloud-monitor" target="_blank" class="project-link">↗ GitHub</a>
-          </div>
-        </div>
-        <div class="project-name">Cloud Monitor Dashboard</div>
-        <div class="project-tagline">Real-time GraphQL Monitoring</div>
-        <p class="project-desc">
-          Real-time cloud resource monitoring dashboard with GraphQL subscriptions
-          for live metrics polling. Built with React 18 + Vite + Apollo Client + MUI.
-          Deployed to Vercel.
-        </p>
-        <div class="project-tags">
-          <span class="project-tag">React 18</span>
-          <span class="project-tag">GraphQL</span>
-          <span class="project-tag">Apollo Client</span>
-          <span class="project-tag">Vite</span>
-          <span class="project-tag">Material UI</span>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-top">
-          <div class="project-emoji">🔗</div>
-          <div class="project-links">
-            <a href="https://github.com/ajaypal9" target="_blank" class="project-link">↗ GitHub</a>
-          </div>
-        </div>
-        <div class="project-name">VectorShift Pipeline Builder</div>
-        <div class="project-tagline">ReactFlow · YC S23 Assessment</div>
-        <p class="project-desc">
-          Visual node-based AI pipeline editor for VectorShift (YC S23). Built
-          ReactFlow canvas with custom node types, edge validation, drag-and-drop
-          interactions, and FastAPI backend integration.
-        </p>
-        <div class="project-tags">
-          <span class="project-tag">React</span>
-          <span class="project-tag">ReactFlow</span>
-          <span class="project-tag">TypeScript</span>
-          <span class="project-tag">Zustand</span>
-          <span class="project-tag">Tailwind CSS</span>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-top">
-          <div class="project-emoji">📚</div>
-          <div class="project-links">
-            <a href="https://github.com/ajaypal9/kb" target="_blank" class="project-link">↗ GitHub</a>
-          </div>
-        </div>
-        <div class="project-name">Knowledge Base SPA</div>
-        <div class="project-tagline">Fast Search · Design Assignment</div>
-        <p class="project-desc">
-          Searchable knowledge management SPA with advanced react-select filtering,
-          fuzzy search, and category management. Built for performance and accessibility.
-        </p>
-        <div class="project-tags">
-          <span class="project-tag">React</span>
-          <span class="project-tag">Vite</span>
-          <span class="project-tag">TypeScript</span>
-          <span class="project-tag">Tailwind CSS</span>
-          <span class="project-tag">react-select</span>
-        </div>
-      </div>
-
+  <!-- FE PROJECTS -->
+  <div class="fe-content proj-grid">
+    <div class="proj-card star">
+      <div class="proj-top"><div class="proj-emoji">🎙️</div><div class="proj-actions"><a href="https://maica24.com" target="_blank" rel="noopener" class="proj-btn">↗ Live</a></div></div>
+      <div class="proj-live">Production live</div>
+      <div class="proj-name">Maica24</div><div class="proj-tagline">AI Voice & Chat Platform</div>
+      <p class="proj-desc">Real-time AI assistant. <strong>LiveKit React SDK voice UI</strong> — live audio streams, agent states, connection lifecycle. Sub-second latency via Zustand. Custom hooks, compound components, WebRTC stream rendering.</p>
+      <div class="proj-tags"><span class="proj-tag">Next.js 14</span><span class="proj-tag">TypeScript</span><span class="proj-tag">LiveKit SDK</span><span class="proj-tag">ElevenLabs</span><span class="proj-tag">OpenAI</span><span class="proj-tag">Zustand</span><span class="proj-tag">WebRTC</span></div>
+    </div>
+    <div class="proj-card star">
+      <div class="proj-top"><div class="proj-emoji">🎰</div><div class="proj-actions"><a href="https://mrcashback.com" target="_blank" rel="noopener" class="proj-btn">↗ Live</a></div></div>
+      <div class="proj-live">12,000+ members</div>
+      <div class="proj-name">Mr. Cashback</div><div class="proj-tagline">Casino CMS · Finnish Market</div>
+      <p class="proj-desc">SEO-critical CMS. <strong>Next.js SSR/SSG/ISR</strong> with strong Core Web Vitals. Advanced filtering, cashback flows, role-based dashboards. Zimpler payment UI, achievement system, daily contests.</p>
+      <div class="proj-tags"><span class="proj-tag">Next.js</span><span class="proj-tag">TypeScript</span><span class="proj-tag">Redux Toolkit</span><span class="proj-tag">SSR/ISR</span><span class="proj-tag">Zimpler</span><span class="proj-tag">Tailwind CSS</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-top"><div class="proj-emoji">🎮</div><div class="proj-actions"><a href="http://metarivals.88winn.com/" target="_blank" rel="noopener" class="proj-btn">↗ Live</a></div></div>
+      <div class="proj-live">Production live</div>
+      <div class="proj-name">MetaRivals</div><div class="proj-tagline">Esport Game Dashboard</div>
+      <p class="proj-desc">Blockchain-integrated gaming platform. <strong>Real-time leaderboards</strong>, tournament scheduling, live match stats. NFT purchase & airdrop UI, PayPal integration, full Admin Panel.</p>
+      <div class="proj-tags"><span class="proj-tag">React.js</span><span class="proj-tag">TypeScript</span><span class="proj-tag">PayPal</span><span class="proj-tag">Bootstrap</span><span class="proj-tag">REST APIs</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-top"><div class="proj-emoji">👁️</div><div class="proj-actions"><a href="https://www.empireofsight.com/" target="_blank" rel="noopener" class="proj-btn">↗ Live</a></div></div>
+      <div class="proj-live">Production live</div>
+      <div class="proj-name">Empire of Sight</div><div class="proj-tagline">NFT Game Companion App</div>
+      <p class="proj-desc">Game companion with player stats, performance metrics, in-game asset tracking. <strong>NFT conversion flow</strong> — in-game items to blockchain assets. Live leaderboards, match history, real-time sync.</p>
+      <div class="proj-tags"><span class="proj-tag">Next.js</span><span class="proj-tag">TypeScript</span><span class="proj-tag">GraphQL</span><span class="proj-tag">Tailwind CSS</span><span class="proj-tag">NFT</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-top"><div class="proj-emoji">🤖</div><div class="proj-actions"><a href="#" class="proj-btn">↗ Live</a></div></div>
+      <div class="proj-live">Production live</div>
+      <div class="proj-name">Bids Auto</div><div class="proj-tagline">Upwork Proposal Automation</div>
+      <p class="proj-desc">Client acquisition platform. <strong>Real-time Upwork job alerts</strong> filtered by skills. AI-powered cover letter generation UI, multi-role system (Agency/Freelancer), team account management.</p>
+      <div class="proj-tags"><span class="proj-tag">React.js</span><span class="proj-tag">TypeScript</span><span class="proj-tag">Redux</span><span class="proj-tag">Firebase</span><span class="proj-tag">REST APIs</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-top"><div class="proj-emoji">🗂️</div><div class="proj-actions"></div></div>
+      <div class="proj-name">ERP Platform</div><div class="proj-tagline">Enterprise Management System</div>
+      <p class="proj-desc">Comprehensive web ERP. Project tracking, employee management, sales, CRM. <strong>Real-time task assignment</strong>, status tracking, reporting and analytics dashboards.</p>
+      <div class="proj-tags"><span class="proj-tag">React.js</span><span class="proj-tag">TypeScript</span><span class="proj-tag">Redux Toolkit</span><span class="proj-tag">Tailwind CSS</span><span class="proj-tag">REST APIs</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-top"><div class="proj-emoji">🎓</div><div class="proj-actions"></div></div>
+      <div class="proj-name">Helen Doron</div><div class="proj-tagline">Online English Learning Platform</div>
+      <p class="proj-desc">Virtual English school for children. <strong>Interactive games, songs, animations</strong>, group live lessons with global peers. Spiral learning flows and student progress tracking.</p>
+      <div class="proj-tags"><span class="proj-tag">React.js</span><span class="proj-tag">TypeScript</span><span class="proj-tag">Firebase</span><span class="proj-tag">Bootstrap</span><span class="proj-tag">REST APIs</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-top"><div class="proj-emoji">🔗</div><div class="proj-actions"><a href="https://github.com/ajaypal9" target="_blank" rel="noopener" class="proj-btn">↗ GitHub</a></div></div>
+      <div class="proj-name">VectorShift Pipeline Builder</div><div class="proj-tagline">ReactFlow · YC S23 Assessment</div>
+      <p class="proj-desc">Visual node-based AI pipeline editor. <strong>ReactFlow canvas</strong> with custom node types, edge validation, drag-and-drop. FastAPI backend integration for DAG parsing.</p>
+      <div class="proj-tags"><span class="proj-tag">React</span><span class="proj-tag">ReactFlow</span><span class="proj-tag">TypeScript</span><span class="proj-tag">Zustand</span><span class="proj-tag">Tailwind CSS</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-top"><div class="proj-emoji">☁️</div><div class="proj-actions"><a href="https://github.com/ajaypal9/cloud-monitor" target="_blank" rel="noopener" class="proj-btn">↗ GitHub</a></div></div>
+      <div class="proj-name">Cloud Monitor Dashboard</div><div class="proj-tagline">GraphQL Real-time Monitoring</div>
+      <p class="proj-desc">Real-time cloud resource monitoring. <strong>GraphQL subscriptions</strong> for live metrics. React 18 + Vite + Apollo Client + MUI. Live data tables and status indicators.</p>
+      <div class="proj-tags"><span class="proj-tag">React 18</span><span class="proj-tag">Vite</span><span class="proj-tag">Apollo Client</span><span class="proj-tag">GraphQL</span><span class="proj-tag">MUI</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-top"><div class="proj-emoji">📚</div><div class="proj-actions"><a href="https://github.com/ajaypal9/kb" target="_blank" rel="noopener" class="proj-btn">↗ GitHub</a></div></div>
+      <div class="proj-name">Knowledge Base SPA</div><div class="proj-tagline">Fast Search · Design Assignment</div>
+      <p class="proj-desc">Searchable knowledge SPA. Advanced <strong>react-select filtering</strong>, fuzzy search, category management. Optimized bundle, accessible keyboard navigation.</p>
+      <div class="proj-tags"><span class="proj-tag">React</span><span class="proj-tag">Vite</span><span class="proj-tag">TypeScript</span><span class="proj-tag">Tailwind CSS</span><span class="proj-tag">react-select</span></div>
     </div>
   </div>
-</section>
+
+  <!-- MERN PROJECTS -->
+  <div class="mern-content proj-grid">
+    <div class="proj-card star">
+      <div class="proj-top"><div class="proj-emoji">🎙️</div><div class="proj-actions"><a href="https://maica24.com" target="_blank" rel="noopener" class="proj-btn">↗ Live</a></div></div>
+      <div class="proj-live">Full-Stack · Production</div>
+      <div class="proj-name">Maica24</div><div class="proj-tagline">AI Voice & Chat Platform</div>
+      <p class="proj-desc">End-to-end system. <strong>Node.js/Express backend</strong> — JWT auth, session APIs, conversation history. MongoDB schemas for user data. Next.js frontend + LiveKit + ElevenLabs TTS + OpenAI GPT.</p>
+      <div class="proj-tags"><span class="proj-tag">Next.js</span><span class="proj-tag">Node.js</span><span class="proj-tag">Express</span><span class="proj-tag">MongoDB</span><span class="proj-tag">JWT</span><span class="proj-tag">LiveKit</span><span class="proj-tag">OpenAI</span></div>
+    </div>
+    <div class="proj-card star">
+      <div class="proj-top"><div class="proj-emoji">🎰</div><div class="proj-actions"><a href="https://mrcashback.com" target="_blank" rel="noopener" class="proj-btn">↗ Live</a></div></div>
+      <div class="proj-live">Full-Stack · 12,000+ members</div>
+      <div class="proj-name">Mr. Cashback</div><div class="proj-tagline">Casino CMS · Full-Stack</div>
+      <p class="proj-desc">Full-stack CMS. <strong>Express.js backend</strong> with RBAC, cashback approval APIs. MongoDB schemas for users, offers, transactions. Next.js SSR frontend, Zimpler payment integration end-to-end.</p>
+      <div class="proj-tags"><span class="proj-tag">Next.js</span><span class="proj-tag">Node.js</span><span class="proj-tag">Express</span><span class="proj-tag">MongoDB</span><span class="proj-tag">JWT</span><span class="proj-tag">Zimpler</span><span class="proj-tag">Redux</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-top"><div class="proj-emoji">🎮</div><div class="proj-actions"><a href="http://metarivals.88winn.com/" target="_blank" rel="noopener" class="proj-btn">↗ Live</a></div></div>
+      <div class="proj-live">Full-Stack · Production</div>
+      <div class="proj-name">MetaRivals</div><div class="proj-tagline">Esport Platform · Full-Stack</div>
+      <p class="proj-desc">Full tournament management backend. <strong>PayPal API integration</strong> for NFT purchases and airdrops. Admin Panel with player management, transaction monitoring, tournament oversight backed by REST APIs.</p>
+      <div class="proj-tags"><span class="proj-tag">React.js</span><span class="proj-tag">Node.js</span><span class="proj-tag">MongoDB</span><span class="proj-tag">PayPal API</span><span class="proj-tag">REST APIs</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-top"><div class="proj-emoji">🗂️</div><div class="proj-actions"></div></div>
+      <div class="proj-name">ERP Platform</div><div class="proj-tagline">Enterprise System · Full-Stack</div>
+      <p class="proj-desc">Full CRUD backend. <strong>Express + MongoDB</strong> for employee management, project tracking, sales, CRM. Real-time task assignment, project status APIs, reporting and analytics.</p>
+      <div class="proj-tags"><span class="proj-tag">React.js</span><span class="proj-tag">Node.js</span><span class="proj-tag">Express</span><span class="proj-tag">MongoDB</span><span class="proj-tag">Redux Toolkit</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-top"><div class="proj-emoji">🤖</div><div class="proj-actions"><a href="#" class="proj-btn">↗ Live</a></div></div>
+      <div class="proj-live">Production live</div>
+      <div class="proj-name">Bids Auto</div><div class="proj-tagline">Proposal Automation · Full-Stack</div>
+      <p class="proj-desc"><strong>Node.js backend</strong> for real-time Upwork scraping and skill-based alert delivery. AI-powered cover letter generation via API integration. Multi-role auth (Agency/Freelancer) with team management.</p>
+      <div class="proj-tags"><span class="proj-tag">React.js</span><span class="proj-tag">Node.js</span><span class="proj-tag">Express</span><span class="proj-tag">Firebase</span><span class="proj-tag">Redux</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-top"><div class="proj-emoji">🎓</div><div class="proj-actions"></div></div>
+      <div class="proj-name">Helen Doron</div><div class="proj-tagline">English Learning · Full-Stack</div>
+      <p class="proj-desc"><strong>Firebase backend</strong> for real-time group lesson sessions, user progress, and content delivery. Interactive games, video lessons, spiral learning flows with student progress tracking.</p>
+      <div class="proj-tags"><span class="proj-tag">React.js</span><span class="proj-tag">Firebase</span><span class="proj-tag">Node.js</span><span class="proj-tag">REST APIs</span><span class="proj-tag">Bootstrap</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-top"><div class="proj-emoji">👁️</div><div class="proj-actions"><a href="https://www.empireofsight.com/" target="_blank" rel="noopener" class="proj-btn">↗ Live</a></div></div>
+      <div class="proj-name">Empire of Sight</div><div class="proj-tagline">NFT Game App · Full-Stack</div>
+      <p class="proj-desc">Player stats, leaderboards, in-game asset tracking. <strong>NFT conversion flow</strong> with smart contract integration. GraphQL API layer for real-time game data sync.</p>
+      <div class="proj-tags"><span class="proj-tag">Next.js</span><span class="proj-tag">GraphQL</span><span class="proj-tag">Node.js</span><span class="proj-tag">Tailwind CSS</span><span class="proj-tag">NFT</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-top"><div class="proj-emoji">☁️</div><div class="proj-actions"><a href="https://github.com/ajaypal9/cloud-monitor" target="_blank" rel="noopener" class="proj-btn">↗ GitHub</a></div></div>
+      <div class="proj-name">Cloud Monitor Dashboard</div><div class="proj-tagline">GraphQL API + React Frontend</div>
+      <p class="proj-desc"><strong>Apollo Server + GraphQL subscriptions</strong> backend for live metrics. React 18 + Vite + Apollo Client frontend with MUI data tables and real-time status indicators.</p>
+      <div class="proj-tags"><span class="proj-tag">React 18</span><span class="proj-tag">Node.js</span><span class="proj-tag">Apollo Server</span><span class="proj-tag">GraphQL</span><span class="proj-tag">MUI</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-top"><div class="proj-emoji">🤖</div><div class="proj-actions"><span class="proj-btn" style="opacity:0.5;cursor:default">WIP</span></div></div>
+      <div class="proj-name">Job Application Automator</div><div class="proj-tagline">AI Automation Pipeline · In Progress</div>
+      <p class="proj-desc"><strong>Node.js + BullMQ</strong> job queue backend. Puppeteer for browser automation. Gemini/Groq APIs for resume tailoring. MongoDB for tracking. Next.js dashboard frontend.</p>
+      <div class="proj-tags"><span class="proj-tag">Node.js</span><span class="proj-tag">BullMQ</span><span class="proj-tag">Puppeteer</span><span class="proj-tag">Groq</span><span class="proj-tag">Next.js</span><span class="proj-tag">MongoDB</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-top"><div class="proj-emoji">📚</div><div class="proj-actions"><a href="https://github.com/ajaypal9/kb" target="_blank" rel="noopener" class="proj-btn">↗ GitHub</a></div></div>
+      <div class="proj-name">Knowledge Base SPA</div><div class="proj-tagline">REST API + React SPA</div>
+      <p class="proj-desc"><strong>Node.js + Express API</strong> backend for knowledge entries. Vite/React frontend with advanced react-select filtering, fuzzy search, category management.</p>
+      <div class="proj-tags"><span class="proj-tag">React</span><span class="proj-tag">Node.js</span><span class="proj-tag">Vite</span><span class="proj-tag">Tailwind CSS</span><span class="proj-tag">react-select</span></div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
 
 <!-- EXPERIENCE -->
-<section id="experience">
-  <div class="fade-in">
-    <div class="section-label">// work history</div>
-    <div class="section-title">Where I've <span>Worked</span></div>
-    <div class="timeline">
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-period">Jan 2023 – Present</div>
-        <div class="timeline-role">Senior Frontend Developer</div>
-        <div class="timeline-company">CHICMIC Studios · Mohali, India</div>
-        <ul class="timeline-points">
-          <li>Led frontend development of Maica24 — real-time AI voice & chat platform using LiveKit, ElevenLabs & OpenAI</li>
-          <li>Architected MrCashback casino CMS for Finnish market with SSR/SSG and strong Core Web Vitals</li>
-          <li>Drove adoption of TypeScript, Zustand, and component-driven architecture across projects</li>
-          <li>Awarded Employee of the Year 2023–24 for outstanding contributions</li>
-        </ul>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-period">Jul 2022 – Dec 2022</div>
-        <div class="timeline-role">Frontend Developer</div>
-        <div class="timeline-company">CHICMIC · Mohali, India</div>
-        <ul class="timeline-points">
-          <li>Built and maintained React/Next.js features across multiple client projects</li>
-          <li>Implemented REST API integrations, form flows, and dashboard UIs</li>
-          <li>Improved build performance and introduced code-splitting practices</li>
-        </ul>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-period">Jan 2022 – Jun 2022</div>
-        <div class="timeline-role">Frontend Developer Intern</div>
-        <div class="timeline-company">CHICMIC · Mohali, India</div>
-        <ul class="timeline-points">
-          <li>Developed reusable React components and responsive layouts</li>
-          <li>Worked closely with senior devs on React best practices and Git workflows</li>
-        </ul>
-      </div>
-
+<div class="section reveal" id="experience">
+  <div class="section-label">// work history</div>
+  <h2 class="section-heading">Where I've <em>Worked</em></h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">Jan 2023 – Present</div>
+      <div class="tl-role">Senior Frontend Developer</div>
+      <div class="tl-co">CHICMIC Studios · Mohali, India</div>
+      <ul class="tl-pts">
+        <li class="fe-content">Led frontend architecture of Maica24 — real-time AI voice & chat platform using LiveKit, ElevenLabs & OpenAI</li>
+        <li class="mern-content">Led full-stack development of Maica24 — Node.js/Express backend + Next.js frontend + AI integrations</li>
+        <li>Delivered MrCashback casino CMS serving 12,000+ members in the Finnish market</li>
+        <li class="fe-content">Drove adoption of TypeScript, Zustand, SSR/ISR patterns, and component-driven architecture</li>
+        <li class="mern-content">Architected REST APIs, JWT auth systems, and MongoDB schemas across multiple production apps</li>
+        <li>Awarded <strong>Employee of the Year 2023–24</strong> for outstanding contributions</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">Aug 2022 – Dec 2022</div>
+      <div class="tl-role">Associate Software Developer</div>
+      <div class="tl-co">CHICMIC · Mohali, India</div>
+      <ul class="tl-pts">
+        <li>Built MetaRivals esport dashboard, ERP platform, and Helen Doron learning app</li>
+        <li class="fe-content">Integrated Stripe, PayPal, Google Maps API, and Firebase across client projects</li>
+        <li class="mern-content">Built REST API backends with Express.js, integrated PayPal and Firebase, MongoDB data layers</li>
+        <li>Collaborated with stakeholders to translate business requirements into technical solutions</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">Jan 2022 – Jul 2022</div>
+      <div class="tl-role">Frontend Developer Intern</div>
+      <div class="tl-co">CHICMIC · Mohali, India</div>
+      <ul class="tl-pts">
+        <li>Developed reusable React components and responsive layouts using Bootstrap and Tailwind CSS</li>
+        <li>Worked on REST API integrations, form flows, and dashboard UIs</li>
+        <li>Learned React best practices, Git workflows, and production deployment cycles</li>
+      </ul>
     </div>
   </div>
-</section>
+</div>
+
+<hr class="divider"/>
 
 <!-- CONTACT -->
-<section id="contact">
-  <div class="fade-in">
-    <div class="section-label">// get in touch</div>
-    <div class="section-title">Let's <span>Connect</span></div>
-    <p class="contact-desc">
-      Open to Senior Frontend and Full-Stack MERN roles. Feel free to reach out —
-      I reply within 24 hours.
-    </p>
-    <div class="contact-links">
-      <a href="mailto:ajaypalsingh98141@gmail.com" class="contact-link">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-        Email Me
-      </a>
-      <a href="https://linkedin.com/in/ajaypalsingh98141" target="_blank" class="contact-link">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        LinkedIn
-      </a>
-      <a href="https://github.com/ajaypal9" target="_blank" class="contact-link">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-        GitHub
-      </a>
-      <a href="https://twitter.com/ajay_pal_rai" target="_blank" class="contact-link">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        Twitter
-      </a>
-    </div>
+<div class="section reveal" id="contact" style="text-align:center; padding-bottom:120px;">
+  <div class="section-label" style="display:block;">// get in touch</div>
+  <h2 class="contact-title">Let's <em>Connect</em></h2>
+  <p class="contact-sub">Open to Senior Frontend and Full-Stack MERN roles.<br/>I reply within 24 hours.</p>
+  <div class="contact-row">
+    <a href="mailto:ajaypalsingh98141@gmail.com" class="contact-link">
+      <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>Email
+    </a>
+    <a href="https://linkedin.com/in/ajaypalsingh98141" target="_blank" rel="noopener" class="contact-link">
+      <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn
+    </a>
+    <a href="https://github.com/ajaypal9" target="_blank" rel="noopener" class="contact-link">
+      <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>GitHub
+    </a>
+    <a href="https://twitter.com/ajay_pal_rai" target="_blank" rel="noopener" class="contact-link">
+      <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Twitter
+    </a>
   </div>
-</section>
+</div>
 
-<footer>
-  Designed & built by <span>Ajaypal Singh</span> · Mohali, India · 2025
-</footer>
+<footer>Designed & built by <span>Ajaypal Singh</span> · Mohali, India · 2025</footer>
 
 <script>
-const obs = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.1 });
-document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+function setMode(mode) {
+  document.body.setAttribute('data-mode', mode);
+  localStorage.setItem('portfolio-mode', mode);
+}
+const saved = localStorage.getItem('portfolio-mode');
+if (saved) setMode(saved);
+
+const obs = new IntersectionObserver(
+  entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }),
+  { threshold: 0.08 }
+);
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
